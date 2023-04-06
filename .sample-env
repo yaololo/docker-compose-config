@@ -1,0 +1,2 @@
+# Specify which docker file to use, either local or production
+DOCKERFILE_PATH=

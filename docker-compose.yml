@@ -1,0 +1,26 @@
+version: "3.8"
+
+services:
+  nginx:
+    image: nginx
+    ports:
+      - "4000:4000"
+    volumes:
+      - ./nginx/nginx.conf:/etc/nginx/nginx.conf
+    container_name: "nginx-service"
+
+    # depends_on:
+    #   - web
+
+  wallet_fe:
+    env_file:
+      - .env
+    build: 
+      context: ../my-wallet-fe
+      dockerfile: ${DOCKERFILE_PATH}
+    container_name: "wallet-fe"
+    volumes:
+      - ../my-wallet-fe:/app
+    ports:
+      - 3000:3000
+    
