@@ -23,4 +23,17 @@ services:
       - ../my-wallet-fe:/app
     ports:
       - 3000:3000
+
+  wallet_be:
+    env_file:
+      - .env
+    build: 
+      context: ../my-wallet-be
+      dockerfile: ${DOCKERFILE_PATH}
+    container_name: "wallet-be"
+    volumes:
+      - ../my-wallet-be:/app
+    ports:
+      - 5000:5000
+
     
